@@ -1,44 +1,18 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <title>gdg-group demos</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="https://nutmeg.tools/favicon.png">
-
   <script src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-sd-ce.js"></script>
-
-  <!-- Use `npm run serve` to start a development server. -->
-
-  <style>
-    body {
-      background-color: #eee;
-      padding: 24px;
-    }
-
-    gdg-group {
-      margin: 8px;
-    }
-
-    gdg-group.blue {
-      --gdg-group-background-color: #03A9F4;
-    }
-  </style>
 </head>
+
 <body>
-  <gdg-group></gdg-group>
-
-  <gdg-group showNextEvent urlName="Pickle"></gdg-group>
-
-  <gdg-group>Slot content</gdg-group>
-
-  <gdg-group class="blue"></gdg-group>
-
-  <script>
-    /** Set complex properties */
-    // document.querySelector('gdg-group').foo = ['bar'];
-  </script>
-
-  <!-- In development `gdg-group.bundled.js` will automatically be loaded. -->
+  <gdg-group urlName="gdg-madison" showNextEvent></gdg-group>
+  <gdg-group urlName="cincy-android"></gdg-group>
+  <gdg-group urlName="gdg-tc" showNextEvent>Slot content</gdg-group>
 </body>
+
 </html>

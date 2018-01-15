@@ -1,8 +1,12 @@
-import { Seed, Property, html, TemplateResult } from '@nutmeg/seed';
+import { Seed, Property, html, TemplateResult } from "@nutmeg/seed";
+import * as moment from "moment";
 
 export class GdgGroup extends Seed {
   @Property() public showNextEvent: boolean;
   @Property() public urlName: string;
+  @Property() public groupName: string;
+  @Property() public eventName: string;
+  @Property() public eventDate: string;
 
   constructor() {
     super();
@@ -11,11 +15,12 @@ export class GdgGroup extends Seed {
   /** The component instance has been inserted into the DOM. */
   public connectedCallback() {
     super.connectedCallback();
+    this.fetchGDGInfo();
   }
 
   /** The component instance has been removed from the DOM. */
   public disconnectedCallback() {
-    super.disconnectedCallback()
+    super.disconnectedCallback();
   }
 
   /** Watch for changes to these attributes. */
@@ -25,22 +30,54 @@ export class GdgGroup extends Seed {
 
   /** Rerender when the observed attributes change. */
   public attributeChangedCallback(name: string, oldValue: any, newValue: any) {
-    super.attributeChangedCallback(name, oldValue, newValue)
+    super.attributeChangedCallback(name, oldValue, newValue);
   }
 
+  private fetchGDGInfo(): void {
+    let self = this;
+    fetch(`https://gdg-group-72e25.firebaseapp.com/meetup/${this.urlName}`)
+      .then(res => {
+        return res.json();
+      })
+      .then(json => {
+        self.groupName = json[0].group.name;
+        self.eventName = json[0].name;
+        self.eventDate = json[0].local_date;
+      })
+      .catch(err => self.handleError(err));
+  }
+
+  private handleError(err: any) {
+    return err;
+  }
+
+  private get displayDate() {
+    if (!this.eventDate) {
+      return "";
+    }
+    return `${moment(this.eventDate).format("MMM D")}:`;
+  }
+
+  private get nextEvent(): TemplateResult {
+    return html`
+       <div class="event">${this.displayDate} ${this.eventName}</div>
+    `;
+  }
   /** Styling for the component. */
   public get styles(): TemplateResult {
     return html`
       <style>
-        :host {
-          box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0 ,0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
-        }
-
-        .content {
-          background-color: var(--gdg-group-background-color, #FAFAFA);
-          color: #212121;
-          padding: 16px;
-        }
+          a {
+            align-items: center;
+            color: black;
+            display: flex;
+            font-family: Open Sans, sans-serif;
+            justify-content: flex-start;
+            text-decoration: none;
+          }
+          h1, .event {
+            margin: 0;
+          }
       </style>
     `;
   }
@@ -49,17 +86,17 @@ export class GdgGroup extends Seed {
   public get template(): TemplateResult {
     return html`
       <div class="content">
-        Welcome to &lt;gdg-group&gt;
-
-        <ul>
-          <li>showNextEvent: ${this.showNextEvent}</li>
-          <li>urlName: ${this.urlName}</li>
-        </ul>
-
-        <slot></slot>
+        <a href="https://www.meetup.com/${this.urlName}/">
+          <img src="https://gdg-logo-generator.appspot.com/gdg_icon.svg" width="70px"/>
+          <div>
+            <h1>${this.groupName}</h1>
+            ${this.showNextEvent ? this.nextEvent : ""}
+            <slot></slot>
+          </div>
+        </a>
       </div>
     `;
   }
 }
 
-window.customElements.define('gdg-group', GdgGroup);
+window.customElements.define("gdg-group", GdgGroup);
