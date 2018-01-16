@@ -12,10 +12,7 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "keywords": [
-    "gdg-group",
-    "nutmeg"
-  ],
+  "keywords": ["gdg-group", "nutmeg"],
   "license": "MIT",
   "scripts": {
     "build": "npx nutmeg build .",

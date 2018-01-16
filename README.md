@@ -1,7 +1,7 @@
 &lt;gdg-group&gt;
 ====
 
-![demo image](demo.png)
+![demo image](https://raw.githubusercontent.com/pearlbea/gdg-group/master/demo.png)
 
 Install
 ----
