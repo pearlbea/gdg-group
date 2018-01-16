@@ -1,0 +1,46 @@
+[
+  {
+    "created": 1514823219000,
+    "duration": 7200000,
+    "id": "246372386",
+    "name": "Build a Web Component with Nutmeg",
+    "status": "upcoming",
+    "time": 1516060800000,
+    "local_date": "2018-01-15",
+    "local_time": "18:00",
+    "updated": 1514824815000,
+    "utc_offset": -21600000,
+    "waitlist_count": 0,
+    "yes_rsvp_count": 13,
+    "venue": {
+      "id": 25067449,
+      "name": "Bendyworks",
+      "lat": 43.074459075927734,
+      "lon": -89.38077545166016,
+      "repinned": false,
+      "address_1": "106 E Doty St",
+      "address_2": "Suite 200",
+      "city": "Madison",
+      "country": "us",
+      "localized_country_name": "USA",
+      "zip": "53703",
+      "state": "WI"
+    },
+    "group": {
+      "created": 1487783398000,
+      "name": "GDG Madison",
+      "id": 22571140,
+      "join_mode": "open",
+      "lat": 43.08000183105469,
+      "lon": -89.37999725341797,
+      "urlname": "gdg-madison",
+      "who": "Members",
+      "localized_location": "Madison, WI",
+      "region": "en_US"
+    },
+    "link": "https://www.meetup.com/gdg-madison/events/246372386/",
+    "description":
+      "<p>• What we'll do<br/>Build, test, and deploy a web component using Nutmeg. Nutmeg is a tool that scaffolds a component with tests and best practices baked in. We will walk you through the process, and you will leave with a basic component that you can modify and build upon.</p> <p>• What to bring<br/>Laptop with Node version 8 or above installed (<a href=\"https://nodejs.org/en/\" class=\"linkified\">https://nodejs.org/en/</a>)</p> ",
+    "visibility": "public"
+  }
+]
