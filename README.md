@@ -1,7 +1,10 @@
 &lt;gdg-group&gt;
 ====
 
+A web component that displays a GDG name (and optionally the next scheduled event and/or other text) and links to the group's Meetup page.
+
 ![demo image](https://raw.githubusercontent.com/pearlbea/gdg-group/master/demo.png)
+
 
 Install
 ----
@@ -40,6 +43,8 @@ Properties:
   <gdg-group urlname="gdg-tc">Slot content</gdg-group>
 
 ```
+
+Live demo on [codepen](https://codepen.io/pearlbea/pen/BJJPBR).
 
 License
 ----
