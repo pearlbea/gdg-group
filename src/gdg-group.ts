@@ -40,9 +40,9 @@ export class GdgGroup extends Seed {
         return res.json();
       })
       .then(json => {
-        self.groupName = json[0].group.name;
-        self.eventName = json[0].name;
-        self.eventDate = json[0].local_date;
+        self.groupName = json[0].name;
+        self.eventName = json[1][0].name;
+        self.eventDate = json[1][0].local_date;
       })
       .catch(err => self.handleError(err));
   }
