@@ -1,6 +1,6 @@
 {
   "name": "gdg-group",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Generated Nutmeg Web Component",
   "main": "dist/gdg-group.js",
   "module": "dist/gdg-group.js",
@@ -12,10 +12,7 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "keywords": [
-    "gdg-group",
-    "nutmeg"
-  ],
+  "keywords": ["gdg-group", "nutmeg"],
   "license": "MIT",
   "scripts": {
     "build": "npx nutmeg build .",
