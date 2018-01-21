@@ -14,7 +14,10 @@
   },
   "keywords": ["gdg-group", "nutmeg"],
   "license": "MIT",
-  "homepage": "https://github.com/pearlbea/gdg-group",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pearlbea/gdg-group"
+  },
   "scripts": {
     "build": "npx nutmeg build .",
     "build:production": "npx nutmeg build . --production",
