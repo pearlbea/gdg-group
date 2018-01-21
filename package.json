@@ -1,7 +1,7 @@
 {
   "name": "gdg-group",
-  "version": "0.1.4",
-  "description": "Generated Nutmeg Web Component",
+  "version": "0.1.5",
+  "description": "A GDG web component made with Nutmeg Web Component",
   "main": "dist/gdg-group.js",
   "module": "dist/gdg-group.js",
   "unpkg": "dist/gdg-group.min.js",
@@ -14,6 +14,7 @@
   },
   "keywords": ["gdg-group", "nutmeg"],
   "license": "MIT",
+  "homepage": "https://github.com/pearlbea/gdg-group",
   "scripts": {
     "build": "npx nutmeg build .",
     "build:production": "npx nutmeg build . --production",
