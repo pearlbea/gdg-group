@@ -51,7 +51,7 @@ Properties:
 
   <gdg-group urlName="cincy-android" groupName="GDG Cincinnati"></gdg-group>
 
-  <gdg-group urlName="gdg-tc">Slot content</gdg-group>
+  <gdg-group urlName="gdg-tc" imageWidth="90">Slot content</gdg-group>
 
 ```
 
