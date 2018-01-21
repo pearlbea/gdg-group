@@ -1,6 +1,6 @@
 {
   "name": "gdg-group",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A GDG web component made with Nutmeg Web Component",
   "main": "dist/gdg-group.js",
   "module": "dist/gdg-group.js",
