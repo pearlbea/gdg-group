@@ -2,14 +2,20 @@ import { Seed, Property, html, TemplateResult } from "@nutmeg/seed";
 import * as moment from "moment";
 
 export class GdgGroup extends Seed {
+  @Property() public eventDate: string;
+  @Property() public eventLink: string;
+  @Property() public eventName: string;
+  @Property() public groupName: string;
+  @Property() public imageUrl: string;
+  @Property() public imageWidth: string;
   @Property() public showNextEvent: boolean;
   @Property() public urlName: string;
-  @Property() public groupName: string;
-  @Property() public eventName: string;
-  @Property() public eventDate: string;
 
   constructor() {
     super();
+    this.imageUrl =
+      this.imageUrl || "https://gdg-logo-generator.appspot.com/gdg_icon.svg";
+    this.imageWidth = this.imageWidth || "70";
   }
 
   /** The component instance has been inserted into the DOM. */
@@ -40,9 +46,10 @@ export class GdgGroup extends Seed {
         return res.json();
       })
       .then(json => {
-        self.groupName = json[0].name;
+        self.groupName = self.groupName || json[0].name;
         self.eventName = json[1][0].name;
         self.eventDate = json[1][0].local_date;
+        self.eventLink = json[1][0].link;
       })
       .catch(err => self.handleError(err));
   }
@@ -60,7 +67,9 @@ export class GdgGroup extends Seed {
 
   private get nextEvent(): TemplateResult {
     return html`
-       <div class="event">${this.displayDate} ${this.eventName}</div>
+       <div class="event">
+        <a href="${this.eventLink}">${this.displayDate} ${this.eventName}</a>
+      </div>
     `;
   }
   /** Styling for the component. */
@@ -68,15 +77,18 @@ export class GdgGroup extends Seed {
     return html`
       <style>
           a {
+            color: #000;
+            text-decoration: none;
+          }
+          .content {
             align-items: center;
-            color: black;
             display: flex;
             font-family: Open Sans, sans-serif;
             justify-content: flex-start;
-            text-decoration: none;
           }
-          h1, .event {
-            margin: 0;
+          .group-name {
+            font-size: 1.5em;
+            font-weight: 600;
           }
       </style>
     `;
@@ -86,14 +98,14 @@ export class GdgGroup extends Seed {
   public get template(): TemplateResult {
     return html`
       <div class="content">
-        <a href="https://www.meetup.com/${this.urlName}/">
-          <img src="https://gdg-logo-generator.appspot.com/gdg_icon.svg" width="70px"/>
-          <div>
-            <h1>${this.groupName}</h1>
-            ${this.showNextEvent ? this.nextEvent : ""}
-            <slot></slot>
-          </div>
-        </a>
+        <img src="${this.imageUrl}" width="${this.imageWidth}" />
+        <div class="wrapper">
+          <a href="https://www.meetup.com/${this.urlName}/">
+            <div class="group-name">${this.groupName}</div>
+          </a>
+          ${this.showNextEvent ? this.nextEvent : ""}
+          <slot></slot>
+        </div>
       </div>
     `;
   }

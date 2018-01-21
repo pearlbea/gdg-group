@@ -52,6 +52,40 @@ describe("<gdg-group>", () => {
     });
   });
 
+  describe("with groupName", () => {
+    beforeEach(async () => {
+      component = await timeout(
+        fixture(
+          "<gdg-group urlName='gdg-madison' groupName='maddy'></gdg-group>"
+        )
+      );
+    });
+
+    it("should display a custom", () => {
+      expect(component.$(".content").innerText).to.include("maddy");
+    });
+  });
+
+  describe("with custom Image", () => {
+    beforeEach(async () => {
+      component = await timeout(
+        fixture(
+          "<gdg-group urlName='gdg-madison' imageUrl='https://cdn.pixabay.com/photo/2017/12/14/14/02/cat-3019090_1280.jpg' imageWidth='100'></gdg-group>"
+        )
+      );
+    });
+
+    it("should set the custom url", () => {
+      expect(component.$(".content img").src).to.equal(
+        "https://cdn.pixabay.com/photo/2017/12/14/14/02/cat-3019090_1280.jpg"
+      );
+    });
+
+    it("should set the custom image width", () => {
+      expect(component.$(".content img").width).to.equal(100);
+    });
+  });
+
   describe("slot", () => {
     beforeEach(async () => {
       component = await timeout(fixture("<gdg-group>slot content</gdg-group>"));
