@@ -1,7 +1,7 @@
 &lt;gdg-group&gt;
 ====
 
-A web component that displays a GDG name (and optionally the next scheduled event and/or other text) and links to the group's Meetup page.
+A web component that displays a GDG name (and optionally the next scheduled event and/or other text) and links to the group's Meetup page (and event page, if the next event is displayed).
 
 ![demo image](https://raw.githubusercontent.com/pearlbea/gdg-group/master/demo.png)
 
@@ -21,7 +21,6 @@ Loading this component. It would be a good idea to use a specific version instea
 <script src="https://unpkg.com/gdg-group@latest/dist/gdg-group.min.js"></script>
 ```
 
-
 Usage
 ----
 
@@ -33,14 +32,26 @@ Properties:
 
 **showNextEvent**: boolean
   - optional
-  - include this property if you would like the display the next scheduled event
+  - include this property if you would like to display the next scheduled event
+
+**groupName**: string
+  - optional
+  - set this value if you would like to display something other than the GDG group's official Meetup name
+
+**imageUrl**: string
+  - optional
+  - set this value if you would like to override the default image
+
+**imageWidth**: string
+ - optional
+ - set this value if you would like to override the default image width
 
 ```
-  <gdg-group urlname="gdg-madison" showNextEvent></gdg-group>
+  <gdg-group urlName="gdg-madison" showNextEvent></gdg-group>
 
-  <gdg-group urlname="cincy-android"></gdg-group>
+  <gdg-group urlName="cincy-android" groupName="GDG Cincinnati"></gdg-group>
 
-  <gdg-group urlname="gdg-tc">Slot content</gdg-group>
+  <gdg-group urlName="gdg-tc">Slot content</gdg-group>
 
 ```
 
