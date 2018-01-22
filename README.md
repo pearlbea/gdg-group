@@ -1,3 +1,5 @@
+<img src="https://travis-ci.org/pearlbea/gdg-group.svg?branch=master" />
+
 &lt;gdg-group&gt;
 ====
 
