@@ -29,13 +29,13 @@
     "watch": "npx nutmeg watch ."
   },
   "dependencies": {
-    "@nutmeg/seed": "0.4.2",
+    "@nutmeg/seed": "0.5.0",
     "moment": "^2.20.1"
   },
   "devDependencies": {
-    "@nutmeg/cli": "0.9.6",
+    "@nutmeg/cli": "0.10.0",
     "@types/chai": "4.1.1",
     "@types/mocha": "2.2.46",
-    "@webcomponents/webcomponentsjs": "1.0.22"
+    "@webcomponents/webcomponentsjs": "1.1.0"
   }
 }
