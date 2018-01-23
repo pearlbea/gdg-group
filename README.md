@@ -28,7 +28,7 @@ Usage
 
 Properties: 
 
-**urlname**: string
+**urlName**: string
   - required
   - the name that appears in the Meetup url
 
