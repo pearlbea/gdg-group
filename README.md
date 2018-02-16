@@ -28,32 +28,32 @@ Usage
 
 Properties: 
 
-**urlName**: string
+**url-name**: string
   - required
   - the name that appears in the Meetup url
 
-**showNextEvent**: boolean
+**show-next-event**: boolean
   - optional
   - include this property if you would like to display the next scheduled event
 
-**groupName**: string
+**group-name**: string
   - optional
   - set this value if you would like to display something other than the GDG group's official Meetup name
 
-**imageUrl**: string
+**image-url**: string
   - optional
   - set this value if you would like to override the default image
 
-**imageWidth**: string
+**image-width**: string
  - optional
  - set this value if you would like to override the default image width
 
 ```
-  <gdg-group urlName="gdg-madison" showNextEvent></gdg-group>
+  <gdg-group url-name="gdg-madison" show-next-event></gdg-group>
 
-  <gdg-group urlName="cincy-android" groupName="GDG Cincinnati"></gdg-group>
+  <gdg-group url-name="cincy-android" group-name="GDG Cincinnati"></gdg-group>
 
-  <gdg-group urlName="gdg-tc" imageWidth="90">Slot content</gdg-group>
+  <gdg-group url-name="gdg-tc" image-width="90">Slot content</gdg-group>
 
 ```
 

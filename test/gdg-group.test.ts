@@ -36,7 +36,9 @@ describe("<gdg-group>", () => {
   describe("with showNextEvent", () => {
     beforeEach(async () => {
       component = await timeout(
-        fixture("<gdg-group urlName='gdg-madison' showNextEvent></gdg-group>")
+        fixture(
+          "<gdg-group url-name='gdg-madison' show-next-event></gdg-group>"
+        )
       );
     });
 
