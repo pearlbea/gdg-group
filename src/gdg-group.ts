@@ -1,5 +1,4 @@
 import { Seed, Property, html, TemplateResult } from "@nutmeg/seed";
-import * as moment from "moment";
 
 export class GdgGroup extends Seed {
   @Property() public eventDate: string;
@@ -59,11 +58,31 @@ export class GdgGroup extends Seed {
     return err;
   }
 
+  private monthWord(int: number) {
+    const month = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sept",
+      "Oct",
+      "Nov",
+      "Dec"
+    ];
+    return month[int];
+  }
   private get displayDate() {
     if (!this.eventDate) {
       return "";
     }
-    return `${moment(this.eventDate).format("MMM D")}:`;
+    const date = this.eventDate.split("-");
+    const month = this.monthWord(Number(date[1]) - 1);
+    const day = Number(date[2]);
+    return `${month} ${day}`;
   }
 
   private get nextEvent(): TemplateResult {

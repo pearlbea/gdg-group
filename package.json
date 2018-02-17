@@ -12,10 +12,7 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "keywords": [
-    "gdg-group",
-    "nutmeg"
-  ],
+  "keywords": ["gdg-group", "nutmeg"],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -32,8 +29,7 @@
     "watch": "npx nutmeg watch ."
   },
   "dependencies": {
-    "@nutmeg/seed": "^0.6.1",
-    "moment": "^2.20.1"
+    "@nutmeg/seed": "^0.6.1"
   },
   "devDependencies": {
     "@nutmeg/cli": "0.10.4"
