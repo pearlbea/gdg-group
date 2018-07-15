@@ -1,7 +1,6 @@
 import "mocha";
 import { expect } from "chai";
 import * as sinon from "sinon";
-import * as moment from "moment";
 
 describe("<gdg-group>", () => {
   let component, stub;
@@ -36,7 +35,9 @@ describe("<gdg-group>", () => {
   describe("with showNextEvent", () => {
     beforeEach(async () => {
       component = await timeout(
-        fixture("<gdg-group urlName='gdg-madison' showNextEvent></gdg-group>")
+        fixture(
+          "<gdg-group url-name='gdg-madison' show-next-event></gdg-group>"
+        )
       );
     });
 
@@ -47,8 +48,7 @@ describe("<gdg-group>", () => {
     });
 
     it("should display a pretty date", () => {
-      let displayDate = moment("2018-01-15").format("MMM D");
-      expect(component.$(".content").innerText).to.include(displayDate);
+      expect(component.$(".content").innerText).to.include("Jan 15");
     });
   });
 

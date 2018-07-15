@@ -1,6 +1,6 @@
 {
   "name": "gdg-group",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "A GDG web component made with Nutmeg Web Component",
   "main": "dist/gdg-group.js",
   "module": "dist/gdg-group.js",
@@ -29,8 +29,7 @@
     "watch": "npx nutmeg watch ."
   },
   "dependencies": {
-    "@nutmeg/seed": "^0.6.0",
-    "moment": "^2.20.1"
+    "@nutmeg/seed": "^0.6.1"
   },
   "devDependencies": {
     "@nutmeg/cli": "0.11.0"
