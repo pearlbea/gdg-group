@@ -1,7 +1,6 @@
 import "mocha";
 import { expect } from "chai";
 import * as sinon from "sinon";
-import * as moment from "moment";
 
 describe("<gdg-group>", () => {
   let component, stub;
@@ -18,7 +17,7 @@ describe("<gdg-group>", () => {
   describe("with urlName only", () => {
     beforeEach(async () => {
       component = await timeout(
-        fixture("<gdg-group urlName='gdg-madison'></gdg-group>")
+        fixture("<gdg-group url-name='gdgmadison'></gdg-group>")
       );
     });
 
@@ -36,7 +35,7 @@ describe("<gdg-group>", () => {
   describe("with showNextEvent", () => {
     beforeEach(async () => {
       component = await timeout(
-        fixture("<gdg-group urlName='gdg-madison' showNextEvent></gdg-group>")
+        fixture("<gdg-group url-name='gdgmadison' show-next-event></gdg-group>")
       );
     });
 
@@ -47,8 +46,7 @@ describe("<gdg-group>", () => {
     });
 
     it("should display a pretty date", () => {
-      let displayDate = moment("2018-01-15").format("MMM D");
-      expect(component.$(".content").innerText).to.include(displayDate);
+      expect(component.$(".content").innerText).to.include("Jan 15");
     });
   });
 
@@ -56,7 +54,7 @@ describe("<gdg-group>", () => {
     beforeEach(async () => {
       component = await timeout(
         fixture(
-          "<gdg-group urlName='gdg-madison' groupName='maddy'></gdg-group>"
+          "<gdg-group url-name='gdgmadison' group-name='maddy'></gdg-group>"
         )
       );
     });
@@ -70,7 +68,7 @@ describe("<gdg-group>", () => {
     beforeEach(async () => {
       component = await timeout(
         fixture(
-          "<gdg-group urlName='gdg-madison' imageUrl='https://cdn.pixabay.com/photo/2017/12/14/14/02/cat-3019090_1280.jpg' imageWidth='100'></gdg-group>"
+          "<gdg-group url-name='gdgmadison' image-url='https://cdn.pixabay.com/photo/2017/12/14/14/02/cat-3019090_1280.jpg' image-width='100'></gdg-group>"
         )
       );
     });
