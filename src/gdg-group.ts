@@ -1,4 +1,29 @@
 import { Seed, Property, html, TemplateResult } from "@nutmeg/seed";
+import {
+  Failure,
+  fold,
+  Initialized,
+  Pending,
+  RemoteData,
+  Success
+} from "@abraham/remotedata";
+
+interface GDGGroupEvent {
+  name: string;
+  local_date: string;
+  link: string;
+}
+
+interface GDGGroupData {
+  name: string;
+  nextEvent: GDGGroupEvent;
+}
+
+interface ErrorResponse {
+  message: string;
+}
+
+type State = RemoteData<GDGGroupData, ErrorResponse>;
 
 export class GdgGroup extends Seed {
   @Property() public eventDate: string;
@@ -10,17 +35,17 @@ export class GdgGroup extends Seed {
   @Property() public showNextEvent: boolean;
   @Property() public urlName: string;
 
+  private state: State = new Initialized();
+  private ROOT_URL: string = "https://gdg-group-72e25.firebaseapp.com/meetup/";
+
   constructor() {
     super();
-    this.imageUrl =
-      this.imageUrl || "https://gdg-logo-generator.appspot.com/gdg_icon.svg";
-    this.imageWidth = this.imageWidth || "70";
   }
 
   /** The component instance has been inserted into the DOM. */
   public connectedCallback() {
     super.connectedCallback();
-    this.fetchGDGInfo();
+    this.getData();
   }
 
   /** The component instance has been removed from the DOM. */
@@ -38,24 +63,43 @@ export class GdgGroup extends Seed {
     super.attributeChangedCallback(name, oldValue, newValue);
   }
 
-  private fetchGDGInfo(): void {
-    let self = this;
-    fetch(`https://gdg-group-72e25.firebaseapp.com/meetup/${this.urlName}`)
-      .then(res => {
-        return res.json();
-      })
-      .then(json => {
-        self.groupName = self.groupName || json[0].name;
-        const event = json[1][0];
-        self.eventName = event.name;
-        self.eventDate = event.local_date;
-        self.eventLink = event.link;
-      })
-      .catch(err => self.handleError(err));
+  // need to define interface for returned data
+  private async getData() {
+    this.state = new Pending();
+    const response = await fetch(`${this.ROOT_URL}${this.urlName}`);
+    if (response) {
+      const gdgData: GDGGroupData = await response.json();
+      this.state = new Success(gdgData);
+      this.setValues(gdgData);
+    } else {
+      this.state = new Failure(response);
+    }
   }
 
-  private handleError(err: any) {
-    return err;
+  private get view(): (state: State) => TemplateResult {
+    return fold<TemplateResult, GDGGroupData, ErrorResponse>(
+      () => html`Initialized`,
+      () => html`Loading...`,
+      (data: GDGGroupData) => this.content(),
+      (error: ErrorResponse) => this.errMessage(error)
+    );
+  }
+
+  private setValues(data: GDGGroupData) {
+    this.imageUrl =
+      this.imageUrl || "https://gdg-logo-generator.appspot.com/gdg_icon.svg";
+    this.imageWidth = this.imageWidth || "70";
+    this.groupName = this.groupName || data.name;
+    const event = data.nextEvent;
+    if (event) {
+      this.eventName = event.name;
+      this.eventDate = event.local_date;
+      this.eventLink = event.link;
+    }
+  }
+
+  private errMessage(err: any) {
+    return html`${err}`;
   }
 
   private monthWord(int: number) {
@@ -114,8 +158,7 @@ export class GdgGroup extends Seed {
     `;
   }
 
-  /** HTML Template for the component. */
-  public get template(): TemplateResult {
+  public content(): TemplateResult {
     return html`
       <div class="content">
         <img src="${this.imageUrl}" width="${this.imageWidth}" />
@@ -128,6 +171,11 @@ export class GdgGroup extends Seed {
         </div>
       </div>
     `;
+  }
+
+  /** HTML Template for the component. */
+  public get template(): TemplateResult {
+    return this.view(this.state);
   }
 }
 
