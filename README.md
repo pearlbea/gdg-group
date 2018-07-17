@@ -49,7 +49,7 @@ Properties:
  - set this value if you would like to override the default image width
 
 ```
-  <gdg-group url-name="gdg-madison" show-next-event></gdg-group>
+  <gdg-group url-name="gdgmadison" show-next-event></gdg-group>
 
   <gdg-group url-name="cincy-android" group-name="GDG Cincinnati"></gdg-group>
 
