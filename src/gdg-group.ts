@@ -23,7 +23,7 @@ interface ErrorResponse {
   message: string;
 }
 
-type State = RemoteData<GDGGroupData, ErrorResponse>;
+type State = RemoteData<ErrorResponse, GDGGroupData>;
 
 export class GdgGroup extends Seed {
   @Property() public eventDate: string;
@@ -77,11 +77,11 @@ export class GdgGroup extends Seed {
   }
 
   private get view(): (state: State) => TemplateResult {
-    return fold<TemplateResult, GDGGroupData, ErrorResponse>(
+    return fold<TemplateResult, ErrorResponse, GDGGroupData>(
       () => html`Initialized`,
       () => html`Loading...`,
-      (data: GDGGroupData) => this.content(),
-      (error: ErrorResponse) => this.errMessage(error)
+      (error: ErrorResponse) => this.errMessage(error),
+      (data: GDGGroupData) => this.content()
     );
   }
 
