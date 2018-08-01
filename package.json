@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@abraham/remotedata": "^0.6.0",
-    "@nutmeg/seed": "^0.6.1"
+    "@nutmeg/seed": "^0.13.0"
   },
   "devDependencies": {
     "@nutmeg/cli": "0.15.0",
