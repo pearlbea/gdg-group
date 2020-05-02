@@ -37,7 +37,7 @@
     "@nutmeg/seed": "^0.13.0"
   },
   "devDependencies": {
-    "@nutmeg/cli": "0.15.0",
+    "@nutmeg/cli": "0.17.2",
     "ts-lint": "4.5.1",
     "typescript": "3.3.3"
   }
